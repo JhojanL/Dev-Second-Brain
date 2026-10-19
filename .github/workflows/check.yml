@@ -1,0 +1,27 @@
+name: Check vault
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the complete history
+        uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install project-pinned tools
+        uses: jdx/mise-action@720e96afaf7f84d94fc5ff7d76cbee788fa20eed
+        with:
+          version: 2026.9.11
+      - name: Install locked dependencies without lifecycle scripts
+        run: mise exec -- pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run desktop-independent checks
+        run: mise exec -- pnpm run check

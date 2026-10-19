@@ -1,0 +1,4 @@
+title = "Dev Second Brain public template"
+
+[extend]
+useDefault = true

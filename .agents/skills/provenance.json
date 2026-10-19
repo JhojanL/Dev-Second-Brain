@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/kepano/obsidian-skills",
+  "commit": "3ccff5338ea700537839b21900aa5358a0402c98",
+  "reviewedOn": "2026-10-18",
+  "skills": [
+    "obsidian-markdown",
+    "obsidian-bases",
+    "obsidian-cli"
+  ],
+  "files": {
+    "LICENSE": "64c64d48361edfe8610016441bf593256ea9b67f133b00f47c55aa29ee878567",
+    "obsidian-bases/SKILL.md": "c0037f20926c7d8591cdd040365e4c0e4c0c4146386a506f28f241faee9a27d9",
+    "obsidian-bases/references/FUNCTIONS_REFERENCE.md": "208fd63aead9bca1975626fea52605e6ab9434dc0529d923feb36b18b8877d3b",
+    "obsidian-cli/SKILL.md": "b54257cdc0e5d04488b35b0c797bfe427b24359f0848d3c73924dcacf8da6358",
+    "obsidian-markdown/SKILL.md": "7ad72e1f0a9081ed325e76b6402ad5de50a00e63e2341fd403a92f147234a007",
+    "obsidian-markdown/references/CALLOUTS.md": "9912ec2e3f8711f65b8ceb82cc19cbffc5e6f8ccf2ab627e18926c522c383d8b",
+    "obsidian-markdown/references/EMBEDS.md": "63b6205507e28fb58cf200bc348a2b139e50ae739743e2e6316732148973cb7a",
+    "obsidian-markdown/references/PROPERTIES.md": "392953b5838c3ab3df135b5a914f100ae7b95e4501b6a2e5c8dc63da3ac7558b"
+  }
+}

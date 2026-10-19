@@ -1,0 +1,47 @@
+{
+  "app.json": {
+    "attachmentFolderPath": "Media",
+    "alwaysUpdateLinks": true,
+    "propertiesInDocument": "visible"
+  },
+  "templates.json": {
+    "folder": "Templates",
+    "dateFormat": "YYYY-MM-DD",
+    "timeFormat": "HH:mm:ss"
+  },
+  "daily-notes.json": {
+    "folder": "Daily Notes",
+    "format": "YYYY-MM-DD",
+    "template": "Templates/Daily.md"
+  },
+  "backlink.json": {
+    "backlinkInDocument": true
+  },
+  "core-plugins.json": {
+    "backlink": true,
+    "outgoing-link": true,
+    "global-search": true,
+    "properties": true,
+    "daily-notes": true,
+    "templates": true,
+    "bases": true
+  },
+  "types.json": {
+    "types": {
+      "type": "text",
+      "status": "text",
+      "created_at": "datetime",
+      "updated_at": "datetime",
+      "classification": "text",
+      "categories": "multitext",
+      "aliases": "aliases",
+      "tags": "tags",
+      "sources": "multitext",
+      "projects": "multitext",
+      "technologies": "multitext",
+      "platforms": "multitext",
+      "reviewed_at": "datetime",
+      "review_due": "date"
+    }
+  }
+}

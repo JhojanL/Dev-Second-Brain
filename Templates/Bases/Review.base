@@ -1,0 +1,19 @@
+filters:
+  and:
+    - file.ext == "md"
+    - (file.inFolder("Projects") || file.inFolder("Knowledge") || file.inFolder("Categories") || file.inFolder("Daily Notes"))
+    - status == "draft" || (review_due && date(review_due) <= today())
+formulas:
+  review_reason: if(status == "draft", "Needs first review", "Review due")
+views:
+  - type: table
+    name: Notes needing review
+    order:
+      - file.name
+      - type
+      - status
+      - formula.review_reason
+      - updated_at
+    sort:
+      - property: updated_at
+        direction: DESC

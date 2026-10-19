@@ -1,0 +1,18 @@
+{
+  "types": {
+    "type": "text",
+    "status": "text",
+    "created_at": "datetime",
+    "updated_at": "datetime",
+    "classification": "text",
+    "categories": "multitext",
+    "aliases": "aliases",
+    "tags": "tags",
+    "sources": "multitext",
+    "projects": "multitext",
+    "technologies": "multitext",
+    "platforms": "multitext",
+    "reviewed_at": "datetime",
+    "review_due": "date"
+  }
+}

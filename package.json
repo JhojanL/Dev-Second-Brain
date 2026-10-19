@@ -1,0 +1,30 @@
+{
+  "name": "dev-second-brain",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A modular Obsidian vault for the software development lifecycle.",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=24.19.0 <25", "pnpm": "11.22.0" },
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "check": "node scripts/check.mjs",
+    "lint:markdown": "markdownlint-cli2",
+    "lint:js": "eslint .",
+    "check:vault": "node scripts/validate.mjs",
+    "check:secrets": "node scripts/secrets.mjs",
+    "check:obsidian": "node scripts/obsidian-smoke.mjs",
+    "test": "node --test scripts/tests/*.test.mjs",
+    "skills:sync": "node scripts/sync-skills.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "ajv": "8.20.0",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
+    "markdown-it": "15.0.3",
+    "markdownlint-cli2": "0.23.3",
+    "yaml": "2.9.1"
+  }
+}

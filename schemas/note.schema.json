@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vault content note",
+  "type": "object",
+  "required": ["type", "status", "created_at", "updated_at", "classification", "categories"],
+  "additionalProperties": false,
+  "properties": {
+    "type": { "enum": ["concept", "playbook", "project", "decision", "source", "category", "daily"] },
+    "status": { "enum": ["draft", "reviewed", "deprecated"] },
+    "created_at": { "type": "string", "format": "local-datetime" },
+    "updated_at": { "type": "string", "format": "local-datetime" },
+    "classification": { "enum": ["public", "internal", "confidential"] },
+    "categories": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^\\[\\[Categories/[^\\[\\]#|]+\\]\\]$" } },
+    "aliases": { "$ref": "#/definitions/strings" },
+    "tags": { "$ref": "#/definitions/strings" },
+    "sources": { "$ref": "#/definitions/strings" },
+    "projects": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^\\[\\[Projects/[^\\[\\]#|]+\\]\\]$" } },
+    "technologies": { "$ref": "#/definitions/strings" },
+    "platforms": { "$ref": "#/definitions/strings" },
+    "reviewed_at": { "type": "string", "format": "local-datetime" },
+    "review_due": { "type": "string", "format": "local-date" }
+  },
+  "definitions": {
+    "strings": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,13 @@
+filters:
+  and:
+    - file.ext == "md"
+    - (file.inFolder("Projects") || file.inFolder("Knowledge") || file.inFolder("Categories") || file.inFolder("Daily Notes"))
+    - type == "category"
+views:
+  - type: table
+    name: Categories
+    order:
+      - file.name
+    sort:
+      - property: updated_at
+        direction: DESC
