@@ -1,0 +1,35 @@
+name: Bug report
+description: Report an incorrect note, broken link, failing check, or setup problem.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Search existing issues first. Use synthetic examples and remove private notes, paths, and settings.
+        Report suspected vulnerabilities privately through Security → Advisories → Report a vulnerability.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+      description: What were you trying to do, what did you expect, and what happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Name the affected note, template, or command and give the smallest known example. Say if the issue is intermittent.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Obsidian version and operating system. For tooling problems, add the command, its redacted output, and the mise, Node.js, and pnpm versions.
+    validations:
+      required: true
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots or additional context
+      description: Optional. Attach only synthetic or redacted content.

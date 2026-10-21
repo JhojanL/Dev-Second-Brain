@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest a note, module, template, or tooling improvement.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check existing requests first. New knowledge needs primary sources; new modules, schema changes, and dependencies need scope discussion before implementation.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or task
+      description: What are you trying to accomplish, and what makes it difficult today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe the change you would find useful. Alternatives, examples, and sources are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optional examples or screenshots using synthetic content.

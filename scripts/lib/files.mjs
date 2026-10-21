@@ -13,6 +13,11 @@ export function distributionFiles(root = repositoryRoot) {
   }).split('\0').filter(Boolean))].sort();
 }
 
+/** Report vendored or generated agent-skill paths, which follow upstream rather than vault conventions. */
+export function isSkillFile(file) {
+  return file.startsWith('.agents/') || file.startsWith('.claude/skills/');
+}
+
 /** Hash file bytes or a buffer without interpreting their contents. */
 export function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');

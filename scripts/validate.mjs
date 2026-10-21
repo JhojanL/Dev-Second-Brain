@@ -3,7 +3,7 @@ import path from 'node:path';
 import Ajv from 'ajv';
 import MarkdownIt from 'markdown-it';
 import { parseDocument } from 'yaml';
-import { distributionFiles, isMain, readJSON, repositoryRoot } from './lib/files.mjs';
+import { distributionFiles, isMain, isSkillFile, readJSON, repositoryRoot } from './lib/files.mjs';
 import { verifySkills } from './sync-skills.mjs';
 
 const markdown = new MarkdownIt({ html: false });
@@ -131,7 +131,7 @@ export function validateVault(root = repositoryRoot, { checkSkills = true } = {}
     if (/[<>:"\\|?*]/.test(file) || file.split('/').some(part => /[. ]$/.test(part) || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(part))) fail(file, 'Filename is not portable to Windows.');
     if (/\.md$/i.test(file) && !file.endsWith('.md')) fail(file, 'Use a lowercase .md extension.');
     if (!existsSync(path.join(root, file))) { fail(file, 'Tracked file is missing; stage its intentional deletion.'); continue; }
-    if (file.startsWith('.agents/') || file.startsWith('.claude/skills/')) continue;
+    if (isSkillFile(file)) continue;
     try {
       const raw = /\.(md|json|jsonc|ya?ml|base)$/i.test(file) ? readFileSync(path.join(root, file), 'utf8') : null;
       if (/\.jsonc?$/.test(file)) JSON.parse(raw);

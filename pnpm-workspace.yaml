@@ -1,0 +1,19 @@
+ignoreScripts: true
+blockExoticSubdeps: true
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+trustPolicy: no-downgrade
+trustLockfile: false
+
+# Remove on or after 2026-10-24 UTC once these exact releases clear seven days.
+# markdown-it fixes three advisories and requires argparse; eslint retains its pin.
+minimumReleaseAgeExclude:
+  - markdown-it@15.0.3
+  - argparse@3.0.3
+  - eslint@10.13.0
+
+# markdownlint's math extension accepts only vulnerable KaTeX 0.16 releases;
+# scope the replacement to it until upstream adopts a fix. See System/Tooling.md.
+overrides:
+  micromark-extension-math@3.1.0>katex: 0.18.2

@@ -1,0 +1,14 @@
+min_version: 2.2.2
+lefthook: mise exec -- lefthook
+assert_lefthook_installed: true
+no_auto_install: true
+
+pre-commit:
+  jobs:
+    - name: staged-secrets
+      run: mise exec -- gitleaks git --pre-commit --staged --redact --config .gitleaks.toml
+
+pre-push:
+  jobs:
+    - name: repository-check
+      run: mise exec -- pnpm run check

@@ -5,17 +5,19 @@
   "description": "A modular Obsidian vault for the software development lifecycle.",
   "license": "MIT",
   "type": "module",
-  "engines": { "node": ">=24.19.0 <25", "pnpm": "11.22.0" },
-  "packageManager": "pnpm@11.22.0",
+  "engines": { "node": ">=24.19.0 <25", "pnpm": "11.28.6" },
+  "packageManager": "pnpm@11.28.6",
   "scripts": {
     "setup": "node scripts/setup.mjs",
     "check": "node scripts/check.mjs",
-    "lint:markdown": "markdownlint-cli2",
+    "lint:markdown": "node scripts/lint-markdown.mjs",
     "lint:js": "eslint .",
     "check:vault": "node scripts/validate.mjs",
     "check:secrets": "node scripts/secrets.mjs",
+    "audit:dependencies": "pnpm audit --audit-level low",
     "check:obsidian": "node scripts/obsidian-smoke.mjs",
     "test": "node --test scripts/tests/*.test.mjs",
+    "test:hooks": "node --test scripts/tests/hooks.test.mjs",
     "skills:sync": "node scripts/sync-skills.mjs"
   },
   "devDependencies": {
@@ -24,7 +26,7 @@
     "eslint": "10.13.0",
     "globals": "17.13.0",
     "markdown-it": "15.0.3",
-    "markdownlint-cli2": "0.23.3",
+    "markdownlint": "0.41.1",
     "yaml": "2.9.1"
   }
 }

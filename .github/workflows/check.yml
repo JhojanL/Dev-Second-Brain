@@ -21,7 +21,16 @@ jobs:
         uses: jdx/mise-action@720e96afaf7f84d94fc5ff7d76cbee788fa20eed
         with:
           version: 2026.9.11
+          install_args: --locked
+      - name: Confirm the project pnpm version
+        run: |
+          mise exec -- pnpm --version
+          test "$(mise exec -- pnpm --version)" = "11.28.6"
       - name: Install locked dependencies without lifecycle scripts
+        id: install-dependencies
         run: mise exec -- pnpm install --frozen-lockfile --ignore-scripts
       - name: Run desktop-independent checks
         run: mise exec -- pnpm run check
+      - name: Audit all dependencies including development tools
+        if: ${{ !cancelled() && steps.install-dependencies.outcome == 'success' }}
+        run: mise exec -- pnpm run audit:dependencies

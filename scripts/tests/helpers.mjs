@@ -4,11 +4,11 @@ import os from 'node:os';
 import path from 'node:path';
 import { repositoryRoot } from '../lib/files.mjs';
 
-/** Create an isolated Git fixture for testContext and register automatic cleanup. */
-export function fixture(testContext) {
+/** Create a Git fixture owned by testContext, using env for initialization. */
+export function fixture(testContext, env = process.env) {
   const root = mkdtempSync(path.join(os.tmpdir(), 'dev-second-brain-test-'));
   testContext.after(() => rmSync(root, { recursive: true, force: true }));
-  execFileSync('git', ['init', '--quiet'], { cwd: root });
+  execFileSync('git', ['init', '--quiet'], { cwd: root, env });
   mkdirSync(path.join(root, 'schemas'));
   cpSync(path.join(repositoryRoot, 'schemas/note.schema.json'), path.join(root, 'schemas/note.schema.json'));
   cpSync(path.join(repositoryRoot, 'schemas/obsidian-settings.json'), path.join(root, 'schemas/obsidian-settings.json'));

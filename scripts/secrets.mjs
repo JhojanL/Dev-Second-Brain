@@ -7,7 +7,7 @@ import { distributionFiles, isMain, repositoryRoot } from './lib/files.mjs';
 /** Run Gitleaks with args at root; reject missing tools and scanner failures without printing secrets. */
 function runScanner(args, root) {
   const result = spawnSync('gitleaks', args, { cwd: root, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
-  if (result.error) throw new Error('Gitleaks is required. Review mise.toml and run mise install, then mise exec -- pnpm run check.');
+  if (result.error) throw new Error('Gitleaks is required. Review mise.toml and mise.lock, run mise install --locked, then mise exec -- pnpm run check.');
   if (result.status !== 0) throw new Error(`Gitleaks failed (${result.status}). ${result.stdout}${result.stderr}`);
   return result.stdout.trim();
 }

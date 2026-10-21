@@ -1,56 +1,84 @@
 # Dev Second Brain
 
-An Obsidian vault for moving software from requirements through design,
-implementation, testing, release, and maintenance. Start at [home](index.md) or
-follow [the first-use walkthrough](START_HERE.md).
+An Obsidian vault template for the software development lifecycle: requirements,
+design, implementation, testing, release, and maintenance.
 
-The full-stack profile includes a connected, **synthetic and unreviewed** issue
-tracker project, reusable engineering notes, seven note templates, category hubs,
-and Bases views. No deployment, research, or security review is claimed.
+It includes:
 
-## Open the vault
+- A connected example project, a **synthetic and unreviewed** issue tracker, with a
+  brief, requirements, an architecture decision, API design, test plan, and
+  release and operations notes.
+- Reusable engineering notes for architecture, backend, frontend, design, testing,
+  security, and delivery.
+- Seven note templates, category hubs, and Bases views driven by typed metadata.
+- Repository checks for Markdown, metadata, links, and secrets, plus reviewed
+  instructions and skills for coding agents.
 
-Open this folder as a vault in Obsidian. Obsidian 1.14.4 is the verified desktop
-version; the CLI requires an enabled, registered desktop CLI and the app running.
-Open `index.md`. Notes and core Bases views work without community plugins,
-Node, or an AI account. GitHub renders ordinary Markdown but does not reproduce
-wikilinks, backlinks, live properties, or embedded Bases.
+Everything uses core Obsidian features. No community plugins, Node.js, or AI
+account is needed to use the vault.
 
-Use this clean template in a **separate private directory and repository** before
-adding work information. Review [security guidance](System/Security.md) first.
+## Get started
+
+1. Clone or download this repository.
+2. Open the folder as a vault in Obsidian. Desktop 1.14.4 is the verified version.
+3. Open `index.md`, or follow the [first-use walkthrough](START_HERE.md).
+
+> [!IMPORTANT]
+> Keep real work in a separate private copy. This template is public, and its
+> checks reject non-public classifications. Read the
+> [security guidance](System/Security.md) before adding work information.
+
+GitHub shows the notes as plain Markdown. Wikilinks, backlinks, live properties,
+and embedded Bases need Obsidian.
 
 ## Repository tooling
 
-Install [mise](https://mise.jdx.dev/getting-started.html) separately, review
-`mise.toml`, and trust that project configuration with `mise trust`. Then:
+The tooling is needed only to run checks or contribute. Install
+[mise](https://mise.jdx.dev/getting-started.html) 2026.9.11, review `mise.toml`
+and `mise.lock`, run `mise trust`, then:
 
 ```bash
-mise install
+mise install --locked
 mise exec -- pnpm install --frozen-lockfile --ignore-scripts
 mise exec -- pnpm run check
-mise exec -- pnpm run skills:sync -- --dry-run
-mise exec -- pnpm run skills:sync
 ```
 
-The pins are Node 24.19.0, pnpm 11.22.0, and Gitleaks 8.30.1. Dependencies stay
-local. `check` lints prose and JavaScript, validates metadata and links, runs
-regression tests, and scans distributable working files plus all Git history.
-It fails clearly if Gitleaks is missing. No desktop app is needed for CI.
+mise installs the pinned Node.js 24.19.0, pnpm 11.28.6, Gitleaks 8.30.1, and
+Lefthook 2.2.2. Dependency lifecycle scripts stay disabled.
 
-For an existing vault, preview configuration with
-`mise exec -- pnpm run setup -- --dry-run`. Close its Obsidian window before
-using `--apply --vault-closed`. Existing conflicting values are reported and
-require the deliberate `--merge` flag. See [tooling and recovery](System/Tooling.md).
+`check` lints Markdown and JavaScript, validates metadata, links, and Bases, runs
+regression tests, and scans working files and Git history for secrets. It works
+offline after installation and never rewrites notes. Other commands, each run
+with `mise exec --`:
 
-## Choose your workflow
+| Command | Purpose |
+| --- | --- |
+| `pnpm run audit:dependencies` | Audit all dependencies against registry advisories (needs network) |
+| `pnpm run setup -- --dry-run` | Preview missing folders and Obsidian configuration changes |
+| `pnpm run skills:sync -- --dry-run` | Preview generated Claude copies of the reviewed skills |
 
-- [First project and daily capture](START_HERE.md)
-- [Full-stack, frontend, and backend profiles](System/Profiles.md)
-- [Metadata, linking, and review conventions](System/Conventions.md)
-- [Local CLI smoke checks and configuration restore](System/Tooling.md)
-- [Reviewed Codex and Claude skills](System/Agents.md)
-- [Contribution checks](CONTRIBUTING.md) and [release history](CHANGELOG.md)
+Optional Git hooks scan staged changes for secrets before each commit and run
+`check` before each push. Review and install them as described in the
+[tooling guide](System/Tooling.md#git-hooks-and-ci).
 
-MIT licensed, copyright JhojanL. The pinned Obsidian skills retain their own
-[MIT attribution and provenance](THIRD_PARTY_NOTICES.md). Nothing in setup
-publishes the repository, connects private data, or activates paid services.
+## Documentation
+
+- [Start here](START_HERE.md): follow the example and create your first notes.
+- [Profiles](System/Profiles.md): full-stack, frontend, and backend setups.
+- [Conventions](System/Conventions.md): metadata, linking, and review rules.
+- [Tooling and recovery](System/Tooling.md): checks, setup, restore, and CI.
+- [Agent configuration](System/Agents.md): Codex and Claude instructions and skills.
+- [Changelog](CHANGELOG.md): changes to the template.
+
+## Contributing and support
+
+Report bugs and suggest improvements through the repository's issue forms.
+Report suspected vulnerabilities privately as described in the
+[security policy](SECURITY.md). Read [CONTRIBUTING.md](CONTRIBUTING.md) before
+opening a pull request. Participation follows the
+[Code of Conduct](CODE_OF_CONDUCT.md).
+
+## License
+
+[MIT](LICENSE), copyright JhojanL. The vendored Obsidian skills keep their own MIT
+license and provenance; see [third-party notices](THIRD_PARTY_NOTICES.md).

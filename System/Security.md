@@ -30,3 +30,13 @@ Never commit local CLI executable paths, setup reports, agent transcripts, auth
 files, or community-plugin binaries/state.
 
 Report potential template problems using [SECURITY.md](../SECURITY.md).
+
+## Tooling controls
+
+The [tooling guide](Tooling.md#dependency-security-policy-and-updates) documents
+script-free dependency installation, release-age and trust checks, and the scoped
+security override. Run the separate registry audit as well as the offline
+repository checks. Local pre-commit hooks
+scan the Git index and pre-push runs the full check; hooks are bypassable and CI
+runs its checks independently. Review generated artifact URLs and checksums in
+`mise.lock` before locked tool installation.

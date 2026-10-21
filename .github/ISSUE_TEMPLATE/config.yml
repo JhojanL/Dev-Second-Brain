@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a vulnerability privately
+    url: https://github.com/JhojanL/Dev-Second-Brain/security/advisories/new
+    about: Report suspected vulnerabilities privately. Keep security details and private notes out of public issues.
